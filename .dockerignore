@@ -1,0 +1,6 @@
+/mongo/
+/node_modules/
+/requests/
+.git/
+.vscode/
+.gitignore

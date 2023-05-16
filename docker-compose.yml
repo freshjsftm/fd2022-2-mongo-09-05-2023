@@ -1,0 +1,27 @@
+version: '3.3'
+services:
+  back-app:
+    build:
+      context: ./
+      # dockerfile: ./Dockerfile
+    ports:
+      - 3005:3000
+    # env_file: .env  
+    environment:
+      PORT: 3000  
+    networks:
+      - mynet  
+    volumes:
+      - ./:/server:ro
+    depends_on: 
+      - fd_mongo
+    restart: on-failure   
+  fd_mongo:
+    image: mongo:6.0.5
+    networks:
+      - mynet
+    volumes:
+      - /home/olena/Documents/fd2022-2-mongo:/data/db
+    restart: always  
+networks:
+  mynet:     
